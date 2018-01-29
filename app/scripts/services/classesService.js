@@ -30,21 +30,26 @@
     }
 
     function getParkClasses(ids) {
+      // return $http({
+      //   method: 'GET',
+      //   url: 'https://maps.raleighnc.gov/class/class.php?&ids=' + ids
+      // });
       return $http({
         method: 'GET',
-        url: 'https://maps.raleighnc.gov/class/class.php?&ids=' + ids
-      });
+        url: 'https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Park_Locator_Service/FeatureServer/0/queryRelatedRecords?f=json&relationshipId=0&outFields=*&objectIds=' + ids
+      });      
     }
 
     function processClasses(data, classes) {
       // Typical response for no classes results is "null"
       if (data === null) { return; }
-
-      angular.forEach(data, function (course) {
+      if (data.relatedRecordGroups === null) { return;};
+      if (data.relatedRecordGroups.length === 0) {return;};
+      angular.forEach(data.relatedRecordGroups[0].relatedRecords, function (course) {
         // Turn date string into Date object for proper sorting. This will make mistakes if in the same day because we remove AM/PM to parse.
-        if (course.START_DATE) { course.sDate = new Date( Date.parse(course.START_DATE.substring(0,course.START_DATE.length - 2)) ); }
+        if (course.attributes.START_DATE) { course.attributes.sDate = new Date( Date.parse(course.attributes.START_DATE) ); }
         
-        var urlName = course.SECTION.replace(/\W+/ig, '').toLowerCase();
+        var urlName = course.attributes.SECTION.replace(/\W+/ig, '').toLowerCase();
         
         // Collect unique section names and divide all classes into sections/categories
         if (classes[urlName]) {

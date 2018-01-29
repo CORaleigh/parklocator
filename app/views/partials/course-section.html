@@ -29,21 +29,21 @@
 	  <div class="md-card-content" layout="column">
 	    <span class="limit-text class-detail" flex> 
 	    	<md-icon md-svg-icon="course" class="icon-course"></md-icon> 
-	    	<b>Course:</b> {{ course.COURSE || 'No Course Preview' }} 
+	    	<b>Course:</b> {{ course.attributes.COURSE || 'No Course Preview' }} 
 	    </span>
 			<span class="limit-text class-detail" flex> 
 				<md-icon md-svg-icon="activity" class="icon-activity"></md-icon> 
-				<b>Activity:</b> {{ course.ACTIVITY || 'No Activity Preview' }} 
+				<b>Activity:</b> {{ course.attributes.ACTIVITY || 'No Activity Preview' }} 
 			</span>
 			<span class="limit-text class-detail" flex> 
 				<md-icon md-svg-icon="calendar-date" class="icon-start-date"></md-icon> 
-				<b>Start Date:</b> {{ (course.START_DATE | date : 'MMM d, y h:mm a') || 'No Date Specified' }} 
+				<b>Start Date:</b> {{ (course.attributes.START_DATE | date : 'MMM d, y h:mm a') || 'No Date Specified' }} 
 			</span>
 	  </div>
 	  
 
 	  <div layout="row" layout-align="end center" class = "card-actions md-card-actions">
-	    <md-button 	ng-href="https://reclink.raleighnc.gov/Activities/ActivitiesCourseDetails.asp?aid={{course.ACTIVITY_ID}}&cid={{course.COURSE_ID}}" 
+	    <md-button 	ng-href="https://reclink.raleighnc.gov/Activities/ActivitiesCourseDetails.asp?aid={{course.attributes.ACTIVITY_ID}}&cid={{course.attributes.COURSE_ID}}" 
 					    		target="_blank"
 					    		class="md-accent more-info"
 					    		aria-label="Learn more about this course"> 

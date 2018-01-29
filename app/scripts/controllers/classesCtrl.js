@@ -2,8 +2,7 @@
 
 angular.module('appControllers').controller('classesCtrl', ['$scope', 'classesService', '$state', 'deviceService',
 	function($scope, classesService, $state, deviceService){
-
-    var parkIds = classesService.getParkIds($scope.currentPark.name);
+    var parkIds = $scope.currentPark.id;//classesService.getParkIds($scope.currentPark.name);
 
     $scope.classes = { sections: [] };
     $scope.scrollTo = deviceService.scrollTo;

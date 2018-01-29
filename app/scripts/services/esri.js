@@ -58,7 +58,7 @@
           });
 
           // Park Markers layer
-          service.parks = new FeatureLayer('https://maps.raleighnc.gov/arcgis/rest/services/Parks/ParkLocator/MapServer/0', { 
+          service.parks = new FeatureLayer('https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Park_Locator_Service/FeatureServer/0', { 
             mode: FeatureLayer.MODE_SNAPSHOT,
             outFields: ['*'],
             id: 'parks'
@@ -110,14 +110,14 @@
           service.greenways2.setRenderer(greenwaysLine);
 
           // Amenity Markers (outdoors)
-          service.amenities1 = new FeatureLayer('https://maps.raleighnc.gov/arcgis/rest/services/Parks/ParkLocator/MapServer/2', {
+          service.amenities1 = new FeatureLayer('https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Park_Locator_Service/FeatureServer/1', {
             mode: FeatureLayer.MODE_SNAPSHOT,
             outFields: ['*'],
             id: 'amenities-outdoors'
           });
 
           // Amenity Markers (indoors)
-          service.amenities2 = new FeatureLayer('https://maps.raleighnc.gov/arcgis/rest/services/Parks/ParkLocator/MapServer/3', {
+          service.amenities2 = new FeatureLayer('https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Park_Locator_Service/FeatureServer/2', {
             mode: FeatureLayer.MODE_SNAPSHOT,
             outFields: ['*'],
             id: 'amenities-indoors'
